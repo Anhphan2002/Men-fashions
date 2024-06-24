@@ -184,7 +184,7 @@ foreach ($result as $row) {
                	$('#paypal_form').hide();
 				$('#stripe_form').show();
 				$('#bank_form').hide();
-            } else if ( advFieldsStatus == 'Bank Deposit' ) {
+            } else if ( advFieldsStatus == 'Bank ' ) {
             	$('#paypal_form').hide();
 				$('#stripe_form').hide();
 				$('#bank_form').show();

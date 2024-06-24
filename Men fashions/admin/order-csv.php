@@ -34,7 +34,7 @@ foreach ($result as $row) {
     // Prepare payment information
     if($row['payment_method'] == 'PayPal') {
         $payment_info = "Payment Method: {$row['payment_method']}\nPayment Id: {$row['payment_id']}\nDate: {$row['payment_date']}\nTransaction Id: {$row['txnid']}";
-    } elseif($row['payment_method'] == 'Bank Deposit') {
+    } elseif($row['payment_method'] == 'Bank ') {
         $payment_info = "Payment Method: {$row['payment_method']}\nPayment Id: {$row['payment_id']}\nDate: {$row['payment_date']}\nTransaction Information: {$row['bank_transaction_info']}";
     }
 

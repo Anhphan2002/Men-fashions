@@ -129,13 +129,13 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
                                 ?>
-                                <?php echo $row_total_price; ?><?php echo LANG_VALUE_1; ?>
+                                <?php echo number_format($row_total_price, 3, '.', ''); ?><?php echo LANG_VALUE_1; ?>
                             </td>
                         </tr>
                         <?php endfor; ?>           
                         <tr>
                             <th colspan="7" class="total-text"><?php echo LANG_VALUE_81; ?></th>
-                            <th class="total-amount"><?php echo $table_total_price; ?><?php echo LANG_VALUE_1; ?></th>
+                            <th class="total-amount"><?php echo number_format($table_total_price, 3, '.', ''); ?><?php echo LANG_VALUE_1; ?></th>
                         </tr>
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM tbl_shipping_cost WHERE country_id=?");
@@ -165,7 +165,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                                 <?php
                                 $final_total = $table_total_price+$shipping_cost;
                                 ?>
-                                <?php echo $final_total; ?><?php echo LANG_VALUE_1; ?>
+                                <?php echo number_format($final_total, '3', '.', ''); ?><?php echo LANG_VALUE_1; ?>
                             </th>
                         </tr>
                     </table> 

@@ -94,8 +94,8 @@ if(isset($_POST['form1'])) {
                             <th><?php echo LANG_VALUE_157; ?></th>
                             <th><?php echo LANG_VALUE_158; ?></th>
                             <th><?php echo LANG_VALUE_159; ?></th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
+                            <th>Quantity</th>
+                            <th class="text-right">Total</th>
                             <th class="text-center" style="width: 100px;"><?php echo LANG_VALUE_83; ?></th>
                         </tr>
                         <?php
@@ -183,8 +183,10 @@ if(isset($_POST['form1'])) {
                                 <?php
                                 $row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
                                 $table_total_price = $table_total_price + $row_total_price;
+                                // Định dạng số để hiển thị 3 chữ số thập phân
+                                // $formatted_row_total_price = number_format($row_total_price, 3, '.', '');
                                 ?>
-                                <?php echo $row_total_price; ?><?php echo LANG_VALUE_1; ?>
+                                <?php echo number_format($row_total_price, 3, '.', ''); ?><?php echo LANG_VALUE_1; ?>
                             </td>
                             <td class="text-center">
                                 <a onclick="return confirmDelete();" href="cart-item-delete.php?id=<?php echo $arr_cart_p_id[$i]; ?>&size=<?php echo $arr_cart_size_id[$i]; ?>&color=<?php echo $arr_cart_color_id[$i]; ?>" class="trash"><i class="fa fa-trash" style="color:red;"></i></a>
@@ -193,7 +195,7 @@ if(isset($_POST['form1'])) {
                         <?php endfor; ?>
                         <tr>
                             <th colspan="7" class="total-text">Tất cả</th>
-                            <th class="total-amount"><?php echo $table_total_price; ?><?php echo LANG_VALUE_1; ?></th>
+                            <th class="total-amount"><?php echo number_format($table_total_price, 3, '.', ''); ?><?php echo LANG_VALUE_1; ?></th>
                             <th></th>
                         </tr>
                     </table> 

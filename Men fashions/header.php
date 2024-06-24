@@ -307,7 +307,8 @@ foreach ($result as $row) {
 					}
 					?>
 
-					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> (<?php echo LANG_VALUE_1; ?><?php
+					<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> 
+					(<?php
 					if(isset($_SESSION['cart_p_id'])) {
 						$table_total_price = 0;
 						$i=0;
@@ -325,11 +326,11 @@ foreach ($result as $row) {
 	                    	$row_total_price = $arr_cart_p_current_price[$i]*$arr_cart_p_qty[$i];
 	                        $table_total_price = $table_total_price + $row_total_price;
 	                    }
-						echo $table_total_price;
+						echo number_format($table_total_price, '3', '.','');
 					} else {
 						echo '0.00';
 					}
-					?>)</a></li>
+					?><?php echo LANG_VALUE_1; ?>)</a></li>
 				</ul>
 			</div>
 			

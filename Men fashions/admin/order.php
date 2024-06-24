@@ -51,7 +51,7 @@ if(isset($_POST['form1'])) {
             //         Card Month: '.$row['card_month'].'<br>
             //         Card Year: '.$row['card_year'].'<br>
         	// 	';
-        	elseif($row['payment_method'] == 'Bank Deposit'):
+        	elseif($row['payment_method'] == 'Bank '):
 				$payment_details = '
                     Transaction Details: <br>'.$row['bank_transaction_info'];
         	endif;
@@ -246,8 +246,9 @@ if($success_message != '') {
                         		<b>Transaction Information:</b> <br><?php echo $row['bank_transaction_info']; ?><br>
                         	<?php endif; ?>
                         </td>
-                        <td><?php echo $row['paid_amount']; ?>đ</td>
-                        
+                        <!-- <td><?php echo $row['paid_amount']; ?>đ</td> -->
+                        <td><?php echo number_format((float)$row['paid_amount'], 3, '.', ''); ?>đ</td>
+
                         <td>
                             <?php echo $row['payment_status']; ?>
                             <br><br>

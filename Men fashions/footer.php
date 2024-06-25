@@ -130,7 +130,6 @@ foreach ($result as $row)
 	</div>
 </div>
 
-
 <a href="#" class="scrollup">
 	<i class="fa fa-angle-up"></i>
 </a>
@@ -147,7 +146,7 @@ foreach ($result as $row) {
 
 <script src="assets/js/jquery-2.2.4.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="https://js.stripe.com/v2/"></script>
+<!-- <script src="https://js.stripe.com/v2/"></script> -->
 <script src="assets/js/megamenu.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/owl.animate.js"></script>

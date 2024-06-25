@@ -459,12 +459,12 @@ if($success_message1 != '') {
                                 <span style="font-size:14px;"><?php echo LANG_VALUE_54; ?></span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
-                                        <del><?php echo $p_old_price; ?><?php echo LANG_VALUE_1; ?></del>
+                                        <del><?php echo number_format($p_old_price,'3', '.', ''); ?><?php echo LANG_VALUE_1; ?></del>
                                     <?php endif; ?> 
-                                        <?php echo $p_current_price; ?><?php echo LANG_VALUE_1; ?>
+                                        <?php echo number_format($p_current_price,'3', '.', ''); ?><?php echo LANG_VALUE_1; ?>
                                 </span>
                             </div>
-                            <input type="hidden" name="p_current_price" value="<?php echo $p_current_price; ?>">
+                            <input type="hidden" name="p_current_price" value="<?php echo number_format($p_current_price,'3', '.', ''); ?>">
                             <input type="hidden" name="p_name" value="<?php echo $p_name; ?>">
                             <input type="hidden" name="p_featured_photo" value="<?php echo $p_featured_photo; ?>">
 							<div class="p-quantity">
@@ -477,7 +477,7 @@ if($success_message1 != '') {
                             </form>
                             <!-- chia sẻ sản phẩm này -->
 							<div class="share">
-                                <?php echo LANG_VALUE_58; ?> <br>
+                                <!-- <?php echo LANG_VALUE_58; ?> <br> -->
 								<div class="sharethis-inline-share-buttons">
                                     
                                 </div>

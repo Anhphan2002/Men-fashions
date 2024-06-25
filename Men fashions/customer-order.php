@@ -181,11 +181,11 @@ if(!isset($_SESSION['customer'])) {
                                 
                             </tbody>
                         </table>
-                        <div class="pagination" style="overflow: hidden;">
+                        <!-- <div class="pagination" style="overflow: hidden;">
                         <?php 
                             echo $pagination; 
                         ?>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

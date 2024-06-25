@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -60,10 +60,10 @@
     <![endif]-->
 
     <!-- Google Font -->
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" -->
-    />
+    /> -->
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -1743,4 +1743,4 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
   </body>
-</html>
+</html> -->

@@ -100,6 +100,7 @@ foreach ($result as $row) {
 	<link rel="stylesheet" href="assets/css/tree-menu.css">
 	<link rel="stylesheet" href="assets/css/select2.min.css">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
 	<?php
@@ -226,9 +227,9 @@ foreach ($result as $row) {
 		<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
 	<?php endif; ?>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script> -->
 	<!-- chia sẻ sản phẩm đến các trang mạng xã hội -->
-	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
+	<!-- <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script> -->
 
 <?php echo $before_head; ?>
 

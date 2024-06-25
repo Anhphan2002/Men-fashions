@@ -76,7 +76,7 @@
 									<td style="width:82px;"><img src="../assets/uploads/<?php echo $row['p_featured_photo']; ?>" alt="<?php echo $row['p_name']; ?>" style="width:80px;"></td>
 									<td><?php echo $row['p_name']; ?></td>
 									<td><?php echo $row['p_old_price']; ?>đ</td>
-									<td><?php echo $row['p_current_price']; ?>đ</td>
+									<td><?php echo number_format((float)$row['p_current_price'], 3, '.', ''); ?>đ</td>
 									<td><?php echo $row['p_qty']; ?></td>
 									<td><?php echo $row['p_total_view']; ?></td>
 									<td>

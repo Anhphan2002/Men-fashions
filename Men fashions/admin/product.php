@@ -15,27 +15,27 @@
 			<div class="box box-info">
 				<div class="box-body table-responsive">
 					<table id="example1" class="table table-bordered table-hover table-striped">
-					<thead class="thead-dark">
+						<thead class="thead-dark">
 							<tr>
-								<th width="10">#</th>
-								<th>Photo</th>
-								<th width="160">Product Name</th>
-								<th width="45">Old Price</th>
-								<th width="45">(C) Price</th>
-								<th width="45">Quantity</th>
-								<th width="45">Total View</th>
+								<th width="5">#</th>
+								<th>Ảnh</th>
+								<th width="180">Tên SP</th>
+								<th width="45">Giá cũ</th>
+								<th width="45">Giá KM</th>
+								<th width="35">Số lượng</th>
+								<th width="35">Lượt xem</th>
 
-								<th>Featured?</th>
-								<th>Active?</th>
-								<th>Category</th>
-								<th width="80">Action</th>
+								<th>Nổi bật?</th>
+								<th>Hoạt động?</th>
+								<th>Danh mục</th>
+								<th>Hãng SX</th>
+								<th width="80">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							$i=0;
-							$statement = $pdo->prepare("SELECT
-														
+							$statement = $pdo->prepare("SELECT														
 														t1.p_id,
 														t1.p_name,
 														t1.p_old_price,
@@ -47,23 +47,24 @@
 														t1.p_is_featured,
 														t1.p_is_active,
 														t1.ecat_id,
+														t1.manufacturer_id,
 
 														t2.ecat_id,
 														t2.ecat_name,
-
 														t3.mcat_id,
 														t3.mcat_name,
-
 														t4.tcat_id,
-														t4.tcat_name
+														t4.tcat_name,
+
+														t5.manufacturer_id,
+														t5.manufacturer_name
 
 							                           	FROM tbl_product t1
-							                           	JOIN tbl_end_category t2
-							                           	ON t1.ecat_id = t2.ecat_id
-							                           	JOIN tbl_mid_category t3
-							                           	ON t2.mcat_id = t3.mcat_id
-							                           	JOIN tbl_top_category t4
-							                           	ON t3.tcat_id = t4.tcat_id
+							                           	JOIN tbl_end_category t2 ON t1.ecat_id = t2.ecat_id
+							                           	JOIN tbl_mid_category t3 ON t2.mcat_id = t3.mcat_id
+							                           	JOIN tbl_top_category t4 ON t3.tcat_id = t4.tcat_id
+														JOIN tbl_manufacturer t5 ON t1.manufacturer_id = t5.manufacturer_id
+														
 							                           	ORDER BY t1.p_id DESC
 							                           	");
 							$statement->execute();
@@ -86,6 +87,8 @@
 										<?php if($row['p_is_active'] == 1) {echo '<span class="badge badge-success" style="background-color:green;">Yes</span>';} else {echo '<span class="badge badge-danger" style="background-color:red;">No</span>';} ?>
 									</td>
 									<td><?php echo $row['tcat_name']; ?><br><?php echo $row['mcat_name']; ?><br><?php echo $row['ecat_name']; ?></td>
+									<td><?php echo $row['manufacturer_name']; ?></td>
+									
 									<td>										
 										<a href="product-edit.php?id=<?php echo $row['p_id']; ?>" class="btn btn-primary btn-xs">Edit</a>
 										<a href="#" class="btn btn-danger btn-xs" data-href="product-delete.php?id=<?php echo $row['p_id']; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</a>  

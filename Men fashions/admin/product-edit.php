@@ -19,6 +19,11 @@ if(isset($_POST['form1'])) {
         $error_message .= "You must have to select an end level category<br>";
     }
 
+	if(empty($_POST['manufacturer_id'])) {
+        $valid = 0;
+        $error_message .= "You must have to select a Manufacturer<br>";
+    }
+
     if(empty($_POST['p_name'])) {
         $valid = 0;
         $error_message .= "Product name can not be empty<br>";
@@ -97,13 +102,13 @@ if(isset($_POST['form1'])) {
         							p_qty=?,
         							p_description=?,
         							
-
         							p_feature=?,
         							p_condition=?,
         							p_return_policy=?,
         							p_is_featured=?,
         							p_is_active=?,
-        							ecat_id=?
+        							ecat_id=?, 
+									manufacturer_id=?
 
         							WHERE p_id=?");
         	$statement->execute(array(
@@ -113,13 +118,14 @@ if(isset($_POST['form1'])) {
         							$_POST['p_qty'],
         							$_POST['p_description'],
         							// $_POST['p_short_description'],
-
         							$_POST['p_feature'],
         							$_POST['p_condition'],
         							$_POST['p_return_policy'],
         							$_POST['p_is_featured'],
         							$_POST['p_is_active'],
         							$_POST['ecat_id'],
+									$_POST['manufacturer_id'],
+
         							$_REQUEST['id']
         						));
         } else {
@@ -138,13 +144,13 @@ if(isset($_POST['form1'])) {
         							p_featured_photo=?,
         							p_description=?,
         							
-
         							p_feature=?,
         							p_condition=?,
         							p_return_policy=?,
         							p_is_featured=?,
         							p_is_active=?,
-        							ecat_id=?
+        							ecat_id=?,
+									manufacturer_id=?
 
         							WHERE p_id=?");
         	$statement->execute(array(
@@ -155,13 +161,14 @@ if(isset($_POST['form1'])) {
         							$final_name,
         							$_POST['p_description'],
         							// $_POST['p_short_description'], p_short_description=?,
-
         							$_POST['p_feature'],
         							$_POST['p_condition'],
         							$_POST['p_return_policy'],
         							$_POST['p_is_featured'],
         							$_POST['p_is_active'],
         							$_POST['ecat_id'],
+									$_POST['manufacturer_id'],
+
         							$_REQUEST['id']
         						));
         }
@@ -244,6 +251,7 @@ foreach ($result as $row) {
 	$p_is_featured = $row['p_is_featured'];
 	$p_is_active = $row['p_is_active'];
 	$ecat_id = $row['ecat_id'];
+	$manufacturer_id = $row['manufacturer_id'];
 }
 
 $statement = $pdo->prepare("SELECT * 
@@ -259,6 +267,13 @@ foreach ($result as $row) {
 	$ecat_name = $row['ecat_name'];
     $mcat_id = $row['mcat_id'];
     $tcat_id = $row['tcat_id'];
+}
+// 
+$statement = $pdo->prepare("SELECT * FROM tbl_manufacturer WHERE manufacturer_id=?");
+$statement->execute(array($manufacturer_id));
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+	$manufacturer_name = $row['manufacturer_name'];
 }
 
 $statement = $pdo->prepare("SELECT * FROM tbl_product_size WHERE p_id=?");
@@ -354,6 +369,25 @@ foreach ($result as $row) {
 		                            }
 		                            ?>
 		                        </select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">Manufacturer <span>*</span></label>
+							<div class="col-sm-4">
+								<select name="manufacturer_id" class="form-control select2">
+									<option value="">Select Manufacturer</option>
+									<?php
+									$statement = $pdo->prepare("SELECT * FROM tbl_manufacturer ORDER BY manufacturer_name ASC");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										?>
+										<!-- <option value="<?php echo $row['manufacturer_id']; ?>"><?php echo $row['manufacturer_name']; ?></option> -->
+		                                <option value="<?php echo $row['manufacturer_id']; ?>" <?php if($row['manufacturer_id'] == $manufacturer_id){echo 'selected';} ?>><?php echo $row['manufacturer_name']; ?></option>
+										<?php
+									}
+									?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group">

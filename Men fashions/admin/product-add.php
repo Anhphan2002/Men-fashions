@@ -19,6 +19,11 @@ if(isset($_POST['form1'])) {
         $error_message .= "Bạn phải chọn một danh mục cấp độ cuối cùng<br>";
     }
 
+	if(empty($_POST['manufacturer_id'])) {
+        $valid = 0;
+        $error_message .= "Bạn phải chọn một Hãng sản xuất<br>";
+    }
+
     if(empty($_POST['p_name'])) {
         $valid = 0;
         $error_message .= "Tên sản phẩm không thể trống<br>";
@@ -117,8 +122,9 @@ if(isset($_POST['form1'])) {
 										p_total_view,
 										p_is_featured,
 										p_is_active,
-										ecat_id
-									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,? )");
+										ecat_id,
+										manufacturer_id
+									) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,? )");
 		$statement->execute(array(
 										$_POST['p_name'],
 										$_POST['p_old_price'],
@@ -134,7 +140,8 @@ if(isset($_POST['form1'])) {
 										0,
 										$_POST['p_is_featured'],
 										$_POST['p_is_active'],
-										$_POST['ecat_id']
+										$_POST['ecat_id'],
+										$_POST['manufacturer_id']
 									));
 
 		
@@ -224,6 +231,24 @@ if(isset($_POST['form1'])) {
 							<div class="col-sm-4">
 								<select name="ecat_id" class="form-control select2 end-cat">
 									<option value="">Select End Level Category</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">Manufacturer <span>*</span></label>
+							<div class="col-sm-4">
+								<select name="manufacturer_id" class="form-control select2">
+									<option value="">Select Manufacturer</option>
+									<?php
+									$statement = $pdo->prepare("SELECT * FROM tbl_manufacturer ORDER BY manufacturer_name ASC");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+									foreach ($result as $row) {
+										?>
+										<option value="<?php echo $row['manufacturer_id']; ?>"><?php echo $row['manufacturer_name']; ?></option>
+										<?php
+									}
+									?>
 								</select>
 							</div>
 						</div>

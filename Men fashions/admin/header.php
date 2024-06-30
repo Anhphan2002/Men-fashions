@@ -150,10 +150,10 @@ if(!isset($_SESSION['user'])) {
                         <a href="product.php"><i class="fa fa-shopping-bag"></i> <span>Quản lý sản phẩm</span></a>
                     </li>
 
-<!-- quản lý bình luận -->
-					<li class="treeview <?php if( ($cur_page == ' ') ) {echo 'active';} ?>">
-                        <a href=" ">
-                            <i class="fa fa-comment"></i> <span>Quản lý bình luận</span>
+<!-- quản lý -->
+					<li class="treeview <?php if( ($cur_page == 'message.php') ) {echo 'active';} ?>">
+                        <a href="message.php">
+                            <i class="fa fa-comment"></i> <span>Quản lý tin nhắn</span>
                         </a>
                     </li>
 

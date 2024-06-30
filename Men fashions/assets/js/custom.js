@@ -24,7 +24,7 @@
 
         youtubeThumb.magnificPopup({
             disableOn: 700,
-            type: 'iframe',
+            // type: 'iframe',
             mainClass: 'mfp-fade',
             removalDelay: 160,
             preloader: false,

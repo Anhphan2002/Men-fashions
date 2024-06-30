@@ -2,6 +2,7 @@
 <?php
 ob_start();
 session_start();
+// include 'admin//inc//config.php';
 include("admin/inc/config.php");
 include("admin/inc/functions.php");
 include("admin/inc/CSRF_Protect.php");
@@ -100,7 +101,7 @@ foreach ($result as $row) {
 	<link rel="stylesheet" href="assets/css/tree-menu.css">
 	<link rel="stylesheet" href="assets/css/select2.min.css">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 
 	<?php

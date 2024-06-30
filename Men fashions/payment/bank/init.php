@@ -1,6 +1,7 @@
 <?php
 ob_start();
 session_start();
+
 include("../../admin/inc/config.php");
 include("../../admin/inc/functions.php");
 // Getting all language variables into array as global variable

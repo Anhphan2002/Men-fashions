@@ -27,8 +27,6 @@ foreach ($result as $row)
     $home_popular_product_on_off = $row['home_popular_product_on_off'];
 
 }
-
-
 ?>
 
 <div id="bootstrap-touch-slider" class="carousel bs-slider fade control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="false" >
@@ -90,7 +88,6 @@ foreach ($result as $row)
     </a>
 
 </div>
-
 
 <?php if($home_service_on_off == 1): ?>
 <div class="service bg-gray">
@@ -509,5 +506,6 @@ foreach ($result as $row)
     </div>
 </div>
 <?php endif; ?>
+
     
 <?php require_once('footer.php'); ?>

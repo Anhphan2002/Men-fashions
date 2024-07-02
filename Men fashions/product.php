@@ -548,10 +548,11 @@ if($success_message1 != '') {
 <div role="tabpanel" class="tab-pane" id="review" style="margin-top: -30px;">
     <div class="review-form">
         <?php
-        $statement = $pdo->prepare("SELECT t1.*, t2.cust_name, t2.profile_pic 
+        $statement = $pdo->prepare("SELECT t1.*, t2.cust_name, t2.profile_pic, t3.reply, t3.reply_date, t4.full_name , t4.photo AS user_photo 
                                     FROM tbl_rating t1 
-                                    JOIN tbl_customer t2 
-                                    ON t1.cust_id = t2.cust_id 
+                                    JOIN tbl_customer t2 ON t1.cust_id = t2.cust_id 
+                                    LEFT JOIN tbl_user_reply t3 ON t1.rt_id = t3.rt_id 
+                                    LEFT JOIN tbl_user t4 ON t3.user_id = t4.id
                                     WHERE t1.p_id=?");
         $statement->execute(array($_REQUEST['id']));
         $total = $statement->rowCount();
@@ -565,42 +566,51 @@ if($success_message1 != '') {
                 $j++;
                 ?>
                 <div class="review" id="review_<?php echo $row['rt_id']; ?>">
-                    <div>
-                        <!-- <strong><?php echo LANG_VALUE_78; ?>:</strong> -->
-                        <div class="rating">
-                            <?php
-                            for($i = 1; $i <= 5; $i++) {
-                                echo $i <= $row['rating'] ? '<i class="fa fa-star"></i>' : '<i class="fa fa-star-o"></i>';
-                            }
-                            ?>
-                        </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <?php if($row['profile_pic']): ?>
+                                <img src="<?php echo $row['profile_pic']; ?>" alt="" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
+                            <?php else: ?>
+                                <img src="assets/uploads/logo.jpg" alt="" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
+                            <?php endif; ?>
+                            <strong>
+                                <?php echo $row['cust_name']; ?>
+                                <?php
+                                for($i = 1; $i <= 5; $i++) {
+                                    echo $i <= $row['rating'] ? '<i class="fa fa-star"></i>' : '<i class="fa fa-star-o"></i>';
+                                }
+                                ?>
+                            </strong>
+                        </div>                       
                     </div>
-                    <div>
-                        <?php if($row['profile_pic']): ?>
-                            <img src="<?php echo $row['profile_pic']; ?>" alt="" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
-                        <?php else: ?>
-                            <img src="assets/uploads/logo.jpg" alt="" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
-                        <?php endif; ?>
-                        <strong><?php echo $row['cust_name']; ?></strong>
-                    </div>
-                    <!-- <div><strong><?php echo LANG_VALUE_75; ?>:</strong> <?php echo $row['cust_name']; ?></div> -->
-                    <div>
-                        <!-- <strong><?php echo LANG_VALUE_76; ?>:</strong>  -->
+                    <div style="display: flex;justify-content: space-between;text-align: center;">
                         <span id="comment_<?php echo $row['rt_id']; ?>"><?php echo $row['comment']; ?></span>
+                        <?php if(isset($_SESSION['customer']) && $_SESSION['customer']['cust_id'] == $row['cust_id']): ?>
+                        <div style="font-weight: bold;padding: 2px;">
+                            <button class="edit-review" data-review-id="<?php echo $row['rt_id']; ?>" style="border: none;background-color: white;margin-right: 8px;">Chỉnh sửa</button>
+                            <button class="delete-review" data-review-id="<?php echo $row['rt_id']; ?>" style="border: none;background-color: white;">Xóa</button>
+                        </div>
+                    <?php endif; ?>
                     </div>
                     
-                    <?php if(isset($_SESSION['customer']) && $_SESSION['customer']['cust_id'] == $row['cust_id']): ?>
-                    <div style="display: flex; ">
-                        <button class="btn btn-default edit-review" data-review-id="<?php echo $row['rt_id']; ?>">Edit</button>
-                        <button class="btn btn-danger delete-review" data-review-id="<?php echo $row['rt_id']; ?>">Delete</button>
+                    <?php if(!empty($row['reply'])): ?>
+                    <div class="user-reply" style="margin-left: 60px;">
+                        <div >
+                            <?php if($row['user_photo']): ?>
+                                <img src="assets/uploads/user-1.jpg" alt="" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
+                            <?php else: ?>
+                                <img src="assets/uploads/logo.jpg" alt="" style="width:50px;height:50px;border-radius:50%;margin-right:10px;">
+                            <?php endif; ?>
+                            <strong style="margin-right: 8px;"><?php echo $row['full_name']; ?> </strong> trả lời bởi tác giả!
+                        </div>
+                        <div style="display: flex;">
+                            <p style="margin-right: 8px;"><?php echo $row['reply']; ?></p>
+                            <small style="padding: 3px;"><?php echo $row['reply_date']; ?></small>
+                        </div>
                     </div>
                     <?php endif; ?>
-                    <!-- <div class="answer-section">
-                        <form action="" method="post">
-                            <textarea name="answer" class="form-control" cols="30" rows="2" placeholder="Write your answer..."></textarea>
-                            <input type="submit" class="btn btn-default" name="form_answer" value="Submit Answer">
-                        </form>
-                    </div> -->
+                
+
                 </div>
                 <hr>
                 <?php
@@ -693,6 +703,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+
 							</div>
 						</div>
 					</div>

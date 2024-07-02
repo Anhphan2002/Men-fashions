@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Sliders</h1>
+		<h1>Xem thanh trượt</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="slider-add.php" class="btn btn-primary btn-sm">Add Slider</a>
+		<a href="slider-add.php" class="btn btn-primary btn-sm">Thêm thanh trượt</a>
 	</div>
 </section>
 
@@ -18,13 +18,13 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Photo</th>
-								<th>Heading</th>
-								<th>Content</th>
-								<th>Button Text</th>
-								<th>Button URL</th>
-								<th>Position</th>
-								<th width="140">Action</th>
+								<th>Hình ảnh</th>
+								<th>Tiêu đề</th>
+								<th>Nội dung</th>
+								<th>Nút chữ</th>
+								<th>Nút đường dẫn</th>
+								<th>Vị trí</th>
+								<th width="140">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>

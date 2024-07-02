@@ -22,6 +22,8 @@ if(!isset($_SESSION['user'])) {
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="../assets/uploads/favicon.jpg">
 	<title>Men fashions</title>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -151,6 +153,11 @@ if(!isset($_SESSION['user'])) {
                     </li>
 
 <!-- quản lý -->
+					<li class="treeview <?php if( ($cur_page == 'review.php') ) {echo 'active';} ?>">
+                        <a href="review.php">
+                            <i class="fa fa-comment"></i> <span>Quản lý đánh giá</span>
+                        </a>
+                    </li>	
 					<li class="treeview <?php if( ($cur_page == 'message.php') ) {echo 'active';} ?>">
                         <a href="message.php">
                             <i class="fa fa-comment"></i> <span>Quản lý tin nhắn</span>

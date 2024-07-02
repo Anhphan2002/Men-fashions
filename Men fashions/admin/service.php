@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Services</h1>
+		<h1>Xem dịch vụ</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="service-add.php" class="btn btn-primary btn-sm">Add Service</a>
+		<a href="service-add.php" class="btn btn-primary btn-sm">Thêm dịch vụ</a>
 	</div>
 </section>
 
@@ -18,10 +18,10 @@
 						<thead>
 							<tr>
 								<th width="30">#</th>
-								<th>Photo</th>
-								<th width="100">Title</th>
-								<th>Content</th>
-								<th width="80">Action</th>
+								<th>Hình ảnh</th>
+								<th width="100">Tiêu đề</th>
+								<th>Nội dung</th>
+								<th width="80">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>

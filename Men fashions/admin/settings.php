@@ -778,7 +778,7 @@ if(isset($_POST['form11'])) {
 
 <section class="content-header">
     <div class="content-header-left">
-        <h1>Website Settings</h1>
+        <h1>Cài đặt website</h1>
     </div>
 </section>
 

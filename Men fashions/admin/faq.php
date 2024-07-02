@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View FAQs</h1>
+		<h1>Xem câu hỏi</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="faq-add.php" class="btn btn-primary btn-sm">Add FAQ</a>
+		<a href="faq-add.php" class="btn btn-primary btn-sm">Thêm câu hỏi</a>
 	</div>
 </section>
 
@@ -18,8 +18,8 @@
 						<thead>
 							<tr>
 								<th width="30">#</th>
-								<th width="100">Title</th>
-								<th width="80">Action</th>
+								<th width="100">Tiêu đề</th>
+								<th width="80">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -11,16 +11,23 @@ if(isset($_POST['form1'])) {
         $_POST['receiver_id'],
         $_POST['message_content']
     ));
-    $success_message = 'Message sent successfully.';
+    // Update message status to 'replied'
+    $statement = $pdo->prepare("
+        UPDATE tbl_customer_message
+        SET status = 'Replied'
+        WHERE message_id = ?
+    ");
+    $statement->execute(array($_POST['message_id']));
+    $success_message = 'Tin nhắn đã được gửi thành công.';
 }
 ?>
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Reply to Message</h1>
+		<h1>Trả lời tin nhắn khách hàng</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="message.php" class="btn btn-primary btn-sm">View All Messages</a>
+		<a href="message.php" class="btn btn-primary btn-sm">Xem tất cả tin nhắn</a>
 	</div>
 </section>
 
@@ -46,7 +53,9 @@ if(isset($_POST['form1'])) {
                   <p><?php echo htmlspecialchars($row['message_content']); ?></p>
                   <hr>
                   <form action="" method="post">
+                      <input type="hidden" name="message_id" value="<?php echo $row['message_id']; ?>">
                       <input type="hidden" name="receiver_id" value="<?php echo $row['sender_id']; ?>">
+                      
                       <div class="form-group">
                           <label for="message_content">Your Reply</label>
                           <textarea name="message_content" class="form-control" rows="5" required></textarea>

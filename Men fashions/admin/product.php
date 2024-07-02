@@ -2,10 +2,10 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Products</h1>
+		<h1>Xem sản phẩm</h1>
 	</div>
 	<div class="content-header-right">
-		<a href="product-add.php" class="btn btn-primary btn-sm">Add Product</a>
+		<a href="product-add.php" class="btn btn-primary btn-sm">Thêm sản phẩm</a>
 	</div>
 </section>
 

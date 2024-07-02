@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Messages</h1>
+		<h1>Khách hàng nhắn tin</h1>
 	</div>
 </section>
 
@@ -15,10 +15,11 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Customer Name</th>
-			        <th>Message</th>
-			        <th>Timestamp</th>
-			        <th>Action</th>
+			        <th>Tên khách hàng</th>
+			        <th>Tin nhắn</th>
+			        <th>Ngày giờ</th>
+					<th>Trạng thái</th>
+			        <th>Hành động</th>
 			    </tr>
 			</thead>
             <tbody>
@@ -40,7 +41,8 @@
 	                    <td><?php echo htmlspecialchars($row['cust_name']); ?></td>
 	                    <td><?php echo htmlspecialchars($row['message_content']); ?></td>
 	                    <td><?php echo htmlspecialchars($row['timestamp']); ?></td>
-	                    <td>
+						<td><?php echo htmlspecialchars($row['status']); ?></td>
+						<td>
 	                    	<a href="message-reply.php?message_id=<?php echo $row['message_id']; ?>" class="btn btn-primary btn-xs">Reply</a>
 	                    </td>
 	                </tr>

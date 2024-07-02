@@ -120,10 +120,10 @@ if($success_message != '') {
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Orders</h1>
+		<h1>Xem đơn hàng</h1>
 	</div>
     <div class="content-header-right">
-		<a href="order-csv.php" class="btn btn-primary">Export as CSV</a>
+		<a href="order-csv.php" class="btn btn-primary">Xuất tất cả đơn hàng ra EXCEL</a>
 	</div>
 </section>
 
@@ -137,15 +137,13 @@ if($success_message != '') {
 			<thead>
 			    <tr>
 			        <th>#</th>
-                    <th>Customer</th>
-			        <th>Product Details</th>
-                    <th>
-                    	Payment Information
-                    </th>
-                    <th>Paid Amount</th>
-                    <th>Payment Status</th>
-                    <th>Shipping Status</th>
-			        <th>Action</th>
+                    <th>Khách hàng</th>
+			        <th>Chi tiết sản phẩm</th>
+                    <th>Thông tin thanh toán</th>
+                    <th>Số tiền đã thanh toán</th>
+                    <th>Trạng thái thanh toán</th>
+                    <th>Tình trạng vận chuyển</th>
+			        <th>Hành động</th>
 			    </tr>
 			</thead>
             <tbody>

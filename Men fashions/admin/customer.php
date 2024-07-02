@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>View Customers</h1>
+		<h1>Xem cộng tác viên</h1>
 	</div>
 </section>
 
@@ -15,12 +15,12 @@
 						<thead>
 							<tr>
 								<th width="10">#</th>
-								<th width="180">Name</th>
-								<th width="150">Email Address</th>
-								<th width="180">Country, City, State</th>
-								<th>Status</th>
-								<th width="100">Change Status</th>
-								<th width="100">Action</th>
+								<th width="180">Tên</th>
+								<th width="150">Địa chỉ Email</th>
+								<th width="180">Địa chỉ</th>
+								<th>Trạng thái</th>
+								<th width="100">Thay đổi trạng thái</th>
+								<th width="100">Hành động</th>
 							</tr>
 						</thead>
 						<tbody>

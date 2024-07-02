@@ -2,7 +2,7 @@
 
 <section class="content-header">
 	<div class="content-header-left">
-		<h1>Subscriber</h1>
+		<h1>Xem người đăng ký</h1>
 	</div>
 	<div class="content-header-right">
 		<!-- <a href="subscriber-remove.php" class="btn btn-primary btn-sm">Remove Pending Subscribers</a> -->
@@ -20,8 +20,8 @@
 			<thead>
 			    <tr>
 			        <th>#</th>
-			        <th>Subscriber Email</th>
-			        <th>Action</th>
+			        <th>Địa chỉ Email</th>
+			        <th>Hành động</th>
 			    </tr>
 			</thead>
             <tbody>

@@ -169,9 +169,9 @@ foreach ($result as $row)
         >Chat with Admin
         <button id="close-chat" style="width: 20px;color: black;">X</button>
     </div>
-    <div id="chat-messages" class="chat-messages" style="display: flex; flex-direction: column; padding: 10px; overflow-y: auto;"></div>
+    <div id="chat-messages" class="chat-messages" style="display: flex; flex-direction: column; padding: 10px; overflow-y: auto;margin-bottom: auto;"></div>
     <div id="chat-input" class="chat-input" style="padding: 10px;border-top: 1px solid #ccc;display: flex;">
-        <input type="text" id="message-input" placeholder="Type a message..." style="flex: 1;
+        <input type="text" id="message-input" placeholder="nhập tin nhắn của bạn..." style="flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -182,7 +182,7 @@ foreach ($result as $row)
             border: none;
             border-radius: 5px;
             cursor: pointer;"
-        >Send</button>
+        >Gửi</button>
     </div>
 </div>
 
@@ -224,11 +224,13 @@ foreach ($result as $row) {
         chatBox.style.display = 'flex';
         chatCircle.style.display = 'none';
         loadMessages();
+        startPolling();
     });
 
     closeChatButton.addEventListener('click', () => {
         chatBox.style.display = 'none';
         chatCircle.style.display = 'flex';
+        stopPolling();
     });
 
     sendMessageButton.addEventListener('click', () => {
@@ -249,7 +251,7 @@ foreach ($result as $row) {
                     messageElement.classList.add('message');
                     if (message.sender_id == senderId) {
                         messageElement.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 10px; max-width: 60%; align-self: flex-end; background-color: #e1ffc7;';
-                        messageElement.textContent = `${message.message_content} :You`;
+                        messageElement.textContent = `${message.message_content}`;
                     } else {
                         messageElement.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 10px; max-width: 60%; align-self: flex-start; background-color: #f1f1f1;';
                         messageElement.textContent = `Admin: ${message.message_content}`;
@@ -271,8 +273,8 @@ foreach ($result as $row) {
         .then(data => {
             if (data.status === 'success') {
                 const messageElement = document.createElement('div');
-                messageElement.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 10px; max-width: 60%; align-self: flex-start; background-color: #e1ffc7;';
-                messageElement.textContent = `You: ${messageContent}`;
+                messageElement.style.cssText = 'padding: 10px; margin-bottom: 10px; border-radius: 10px; max-width: 60%; align-self: flex-end; background-color: #e1ffc7;';
+                messageElement.textContent = `${messageContent}`;
                 chatMessages.appendChild(messageElement);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             } else {
@@ -280,6 +282,13 @@ foreach ($result as $row) {
             }
         });
         // .catch(error => console.error('Error sending message:', error));
+    }
+    let pollingInterval;
+    function startPolling() {
+        pollingInterval = setInterval(loadMessages, 1000); // Poll every 5 seconds
+    }
+    function stopPolling() {
+        clearInterval(pollingInterval);
     }
 });
 </script>
